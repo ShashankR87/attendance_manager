@@ -1,0 +1,84 @@
+1.install python 3.7.x
+2.install pip
+3.download and install mySQL workbench
+
+
+4.run these in the terminal
+
+cmd>pip install flask
+cmd>pip install mysqldb
+cmd>pip install numpy
+
+
+5.create a user instance in mysql
+(root will not work)
+
+6.Import the .sql files in your mysql workbench
+7.Find these lines in app.py-
+
+app.config['MYSQL_HOST'] = 'localhost'
+app.config['MYSQL_USER'] = 'shreyas'
+app.config['MYSQL_PASSWORD'] = 'Password@123'
+app.config['MYSQL_DB'] = 'dbmsmini'
+
+replace 'shreyas' with your mysql username and 'Password@123' with your mysql password.
+
+-----------------------------------------------------------------------------------------------------------
+
+Running the app-
+
+1. start the server in mysql workbench
+2. open command prompt from the directory containing app.py and execute
+   flask run
+3. Copy the local host IP address and visit it using a browser.
+
+-----------------------------------------------------------------------------------------------------------
+
+if you want to read the code with proper formats(use sublime text to open app.py) 
+
+
+use dbmsmini;
+select * from attendance;
+select * from teaches;
+select * from teacher;
+select * from admin;
+select * from student;
+select * from taughtby;
+select * from subject;
+
+delimiter &&;
+ create procedure fillTeaches()
+ begin
+ declare stid varchar(10);
+ declare us varchar(10);
+ declare sub varchar(10);
+ declare staffcur cursor for select A.staffid from taughtby A, student S, subject U where  U.sem=S.sem and U.subjectcode=A.subjectcode and A.sec=S.sec and A.elective='N';
+ declare uscur cursor for select S.usn from taughtby A, student S, subject U where U.sem=S.sem and U.subjectcode=A.subjectcode and A.sec=S.sec and A.elective='N';
+ declare subcur cursor for select U.subjectcode from taughtby A, student S, subject U where U.sem=S.sem and U.subjectcode=A.subjectcode and A.sec=S.sec and A.elective='N';
+ open staffcur;
+ open uscur;
+ open subcur;
+ drop table teaches;
+ create table teaches(
+     staffid varchar(10),
+     usn varchar(10),
+     subjectcode varchar(10),
+     primary key(staffid,usn,subjectcode),
+    foreign key (staffid) references teacher(staffid),
+    foreign key (usn) references student(usn),
+   foreign key (subjectcode) references subject(subjectcode)
+);
+ filltable: loop
+     fetch staffcur into stid;
+     fetch uscur into us;
+     fetch subcur into sub;
+     insert into teaches values (stid, us, sub);
+     commit;
+ end loop filltable;
+ close staffcur;
+ close uscur;
+ close subcur;
+ end &&;
+
+
+

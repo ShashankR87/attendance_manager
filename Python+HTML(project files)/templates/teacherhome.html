@@ -1,0 +1,100 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="static/css/circle.css">
+
+    <link rel="stylesheet" href="static/css/checkbox.css">
+    <link rel="stylesheet" href="static/css/normalize.css">
+    <link rel="stylesheet" href="static/css/demo.css">
+    <!-- Pushy CSS -->
+    <link rel="stylesheet" href="static/css/pushy.css">
+    <link href="static/img/favicon.png" rel="icon">
+    <link href="static/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+    <!-- Bootstrap core CSS -->
+    <link href="static/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!--external css-->
+    <link href="static/lib/font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <!-- Custom styles for this template -->
+    <link href="static/css/style.css" rel="stylesheet">
+    <link href="static/css/style-responsive.css" rel="stylesheet">
+
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+    <title>
+        Teacher Dashboard
+    </title>
+</head>
+
+<body style="background-image: url(static/img/bgbg.jpg); background-repeat: no-repeat; background-size: cover;color: aliceblue">
+    <div>
+        <nav class="pushy pushy-left" data-focus="#first-link">
+            <div class="pushy-content">
+                <ul>
+
+                    <li class="pushy-link">
+                        <form method="POST" action="" name="profile">
+                            <button style="backface-visibility: hidden; background-color: transparent; border-color: transparent" name="profile">Profile</button>
+                        </form>
+                    </li>
+                    <li class="pushy-link">
+                        <form method="POST" action="" name="profile">
+                            <button style="backface-visibility: hidden; background-color: transparent; border-color: transparent" name="summary">Attendance Summary</button>
+                        </form>
+                    </li>
+                    <li class="pushy-link">
+                        <form method="POST" action="" name="profile">
+                            <button style="backface-visibility: hidden; background-color: transparent; border-color: transparent" name="add">Add Attendance</button>
+                        </form>
+                    </li>
+                    <li class="pushy-link">
+                        <form method="POST" action="" name="profile">
+                            <button style="backface-visibility: hidden; background-color: transparent; border-color: transparent" name="exit1">Exit and go to user type</button>
+                        </form>
+                    </li>
+
+                </ul>
+            </div>
+        </nav>
+
+        <!-- Site Overlay -->
+        <div class="site-overlay"></div>
+
+        <!-- Your Content -->
+        <div id="container">
+            <!-- Menu Button -->
+            <button class="menu-btn">&#9776; Menu</button>
+            <center>
+                <h1 style="font-family: Arial; font-size: 70"><u>Profile</u></h1>
+                <br>
+                <br>
+
+                <h3 style="font-family: Arial; font-size: 45">Name: {{userdetails[1]}}</h3>
+                <br>
+                <br>
+
+                <h3 style="font-family: Arial; font-size: 45">Staff ID: {{userdetails[0]}}</h3>
+                <br>
+                <br>
+
+                <h4 style="font-family: Arial; font-size: 40">Subjects handled:</h4> {%for subs in subjects%}
+                <h4 style="font-family: Arial; font-size: 30">{{subs}}</h4> &emsp; {%endfor%}
+
+            </center>
+
+            <!-- js placed at the end of the document so the pages load faster -->
+            <script src="static/lib/jquery/jquery.min.js"></script>
+            <script src="static/lib/bootstrap/js/bootstrap.min.js"></script>
+            <script class="include" type="text/javascript" src="static/lib/jquery.dcjqaccordion.2.7.js"></script>
+            <script src="static/lib/jquery.scrollTo.min.js"></script>
+            <script src="static/lib/jquery.nicescroll.js" type="text/javascript"></script>
+            <!--common script for all pages-->
+            <script src="static/lib/common-scripts.js"></script>
+            <!--script for this page-->
+            <script src="static/js/pushy.min.js"></script>
+        </div>
+    </div>
+</body>
+
+</html>

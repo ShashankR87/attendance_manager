@@ -1,0 +1,110 @@
+<html>
+
+<head>
+
+    <title>
+        Teacher Dashboard
+    </title>
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,100' rel='stylesheet' type='text/css'>
+
+    <title>Add</title>
+    <link rel="stylesheet" href="static/css/checkbox.css">
+    <link rel="stylesheet" href="static/css/normalize.css">
+    <link rel="stylesheet" href="static/css/demo.css">
+    <!-- Pushy CSS -->
+    <link rel="stylesheet" href="static/css/pushy.css">
+    <link href="static/img/favicon.png" rel="icon">
+    <link href="static/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+    <!-- Bootstrap core CSS -->
+    <link href="static/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!--external css-->
+    <link href="static/lib/font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <!-- Custom styles for this template -->
+    <link href="static/css/style.css" rel="stylesheet">
+    <link href="static/css/style-responsive.css" rel="stylesheet">
+
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+
+    <link rel='stylesheet prefetch' href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,700'>
+    <link rel='stylesheet prefetch' href='https://raubarrera.neocities.org/cdpn/style.css'>
+
+    <link rel="stylesheet" href="static/css/style.css">
+
+</head>
+
+<body style="background-image: url(static/img/bgbg.jpg); background-repeat: no-repeat; background-size: cover">
+    <nav class="pushy pushy-left" data-focus="#first-link">
+        <div class="pushy-content">
+            <ul>
+
+                <li class="pushy-link">
+                    <form method="POST" action="" name="profile">
+                        <button style="backface-visibility: hidden; background-color: transparent; border-color: transparent" name="profile">Profile</button>
+                    </form>
+                </li>
+                <li class="pushy-link">
+                    <form method="POST" action="" name="profile">
+                        <button style="backface-visibility: hidden; background-color: transparent; border-color: transparent" name="summary">Attendance Summary</button>
+                    </form>
+                </li>
+                <li class="pushy-link">
+                    <form method="POST" action="" name="profile">
+                        <button style="backface-visibility: hidden; background-color: transparent; border-color: transparent" name="add">Add Attendance</button>
+                    </form>
+                </li>
+                <li class="pushy-link">
+                    <form method="POST" action="" name="profile">
+                        <button style="backface-visibility: hidden; background-color: transparent; border-color: transparent" name="exit1">Exit and go to user type</button>
+                    </form>
+                </li>
+
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Site Overlay -->
+    <div class="site-overlay"></div>
+
+    <!-- Your Content -->
+    <div id="container">
+        <!-- Menu Button -->
+        <button class="menu-btn">&#9776; Menu</button>
+        <center>
+            <h1 style="color: white">Add Attendance </h1>
+
+            <div class="select">
+                <form method="post" name="att" style="color: black">
+                    <select name="choice" id="slct">
+                        <option>Choose a Subject</option>
+                        {%for s in sb%}
+                        <option value="{{s}}">{{s}}</option>
+                        {%endfor%}
+                    </select>
+                    <input type="number" name="hour" value="Hour" placeholder="Hour">
+                    <input type="submit" name="att">
+                </form>
+            </div>
+
+            <!-- List of studs -->
+
+        </center>
+
+    </div>
+
+</body>
+
+<script src="static/lib/jquery/jquery.min.js"></script>
+<script src="static/lib/bootstrap/js/bootstrap.min.js"></script>
+<script class="include" type="text/javascript" src="static/lib/jquery.dcjqaccordion.2.7.js"></script>
+<script src="static/lib/jquery.scrollTo.min.js"></script>
+<script src="static/lib/jquery.nicescroll.js" type="text/javascript"></script>
+<!--common script for all pages-->
+<script src="static/lib/common-scripts.js"></script>
+<!--script for this page-->
+<script src="static/js/pushy.min.js"></script>
+
+</html>

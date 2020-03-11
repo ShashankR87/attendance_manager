@@ -1,0 +1,85 @@
+
+student- create table student(usn varchar(10) primary key, name varchar(20) not null, password varchar(40) not null, sem int not null, sec varchar(1) not null, contactno int(10) not null);
+
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| usn       | varchar(10) | NO   | PRI | NULL    |       |
+| name      | varchar(20) | NO   |     | NULL    |       |
+| password  | varchar(40) | NO   |     | NULL    |       |
+| sem       | int(11)     | NO   |     | NULL    |       |
+| sec       | varchar(1)  | NO   |     | NULL    |       |
+| contactno | int(10)     | NO   |     | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+
+teacher- create table teacher(staffid varchar(10) primary key, tname varchar(20) not null, password varchar(40) not null, contactno int(10) not null);
+
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| staffid   | varchar(10) | NO   | PRI | NULL    |       |
+| tname     | varchar(20) | NO   |     | NULL    |       |
+| password  | varchar(40) | NO   |     | NULL    |       |
+| contactno | int(10)     | NO   |     | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+
+hod- create table hod(hid varchar(10) primary key, hname varchar(20) not null, password varchar(40) not null, dept varchar(4) not null, contactno int(10) not null);
+
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| hid       | varchar(10) | NO   | PRI | NULL    |       |
+| hname     | varchar(20) | NO   |     | NULL    |       |
+| password  | varchar(40) | NO   |     | NULL    |       |
+| dept      | varchar(4)  | NO   |     | NULL    |       |
+| contactno | int(10)     | NO   |     | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+
+create table attendance(datetaken date, hour int, usn varchar(10), subjectcode varchar(10), sec varchar(1), status varchar(1), primary key(datetaken,hour,usn, subjectcode), foreign key(usn) references student(usn), foreign key(subjectcode) references subject(subjectcode));
+Query OK, 0 rows affected (1.00 sec)
+
+mysql> desc attendance;
++-------------+-------------+------+-----+---------+-------+
+| Field       | Type        | Null | Key | Default | Extra |
++-------------+-------------+------+-----+---------+-------+
+| datetaken   | date        | NO   | PRI | NULL    |       |
+| hour        | int(11)     | NO   | PRI | NULL    |       |
+| usn         | varchar(10) | NO   | PRI | NULL    |       |
+| subjectcode | varchar(10) | NO   | PRI | NULL    |       |
+| sec         | varchar(1)  | YES  |     | NULL    |       |
+| status      | varchar(1)  | YES  |     | NULL    |       |
++-------------+-------------+------+-----+---------+-------+
+6 rows in set (0.00 sec)
+
+mysql> desc teaches;
+create table teaches(staffid varchar(10), usn varchar(10), subjectcode varchar(10),foreign key(staffid) references teacher(staffid),foreign key(subjectcode) references subject(subjectcode),foreign key(usn) references student(usn),primary key(teacher,student,subjectcode));
++-------------+-------------+------+-----+---------+-------+
+| Field       | Type        | Null | Key | Default | Extra |
++-------------+-------------+------+-----+---------+-------+
+| staffid     | varchar(10) | NO   | PRI | NULL    |       |
+| usn         | varchar(10) | NO   | PRI | NULL    |       |
+| subjectcode | varchar(10) | NO   | PRI | NULL    |       |
++-------------+-------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> desc subject;
+
++-------------+-------------+------+-----+---------+-------+
+| Field       | Type        | Null | Key | Default | Extra |
++-------------+-------------+------+-----+---------+-------+
+| subjectcode | varchar(10) | NO   | PRI | NULL    |       |
+| subname     | varchar(40) | NO   |     | NULL    |       |
+| credits     | int(11)     | NO   |     | NULL    |       |
+| sem         | int(11)     | NO   |     | NULL    |       |
++-------------+-------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> desc taughtby;
+create table taughtby(staffid varchar(10), sec varchar(1), subjectcode varchar(10),foreign key(staffid) references teacher(staffid),foreign key(subjectcode) references subject(subjectcode),primary key(staffid,subjectcode));
++-------------+-------------+------+-----+---------+-------+and 
+| Field       | Type        | Null | Key | Default | Extra |
++-------------+-------------+------+-----+---------+-------+
+| staffid     | varchar(10) | NO   | PRI | NULL    |       |
+| subjectcode | varchar(10) | NO   | PRI | NULL    |       |
+| sec         | varchar(1)  | YES  |     | NULL    |       |
++-------------+-------------+------+-----+---------+-------+

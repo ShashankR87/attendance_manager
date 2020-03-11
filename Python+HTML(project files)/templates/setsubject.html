@@ -1,0 +1,131 @@
+<html>
+
+<head>
+    <title>
+        Admin
+    </title>
+</head>
+<style>
+    body {
+        background-repeat: no-repeat;
+        background-size: cover;
+        font-family: calibri;
+        color: white;
+        font-size: 18
+    }
+    
+    #i1 {
+        font-size: 30;
+        font-weight: bold;
+        margin-left: 200;
+    }
+    
+    img {
+        height: 65;
+        width: auto
+    }
+    
+    input {
+        width: 370;
+        height: 48;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+    }
+    
+    table {
+        margin-left: 250;
+        border-style: hidden;
+    }
+    
+    button {
+        background-color: darkgreen;
+        border-style: hidden;
+        height: 48;
+        width: 250;
+        color: white;
+        font-size: 20;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+    }
+    
+    #i2 {
+        width: auto;
+        height: auto
+    }
+    
+    a:link {
+        color: white
+    }
+    
+    a:visited {
+        color: white
+    }
+    
+    font {
+        margin-left: 280
+    }
+    
+    #i3 {
+        margin-left: 1100;
+    }
+</style>
+
+<body style="background-image: url(static/img/bgbg.jpg); background-repeat: no-repeat; background-size: cover">
+
+    <p id="i1" style="margin-left: 280">Add subject</p>
+    <br>
+    <br>
+    <font>Please fill out the fields below and click "Submit" to get started:</font>
+    <br>
+    <marquee>
+        {% with messages = get_flashed_messages() %} {% if messages %} {% for message in messages %} {{ message }} {% endfor %} {% endif %} {% endwith %} </marquee>
+    <br>
+    <br>
+    <br>
+    <table cellspacing="30">
+        <form method="POST" name="f1">
+            <tr align="left">
+                <th>Subject Name</th>
+                <th>Subject Code</th>
+            </tr>
+            <tr>
+                <td>
+                    <input type="text" name="name">
+                </td>
+                <td>
+                    <input type="text" name="subjectcode">
+                </td>
+            </tr>
+            <tr>
+                <td>Sem</td>
+                <td>Credits</td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="text" name="sem">
+                </td>
+                <td>
+                    <input type="text" name="cred">
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <br>
+                    <input type="submit" name="f1">
+                </td>
+            </tr>
+
+        </form>
+
+    </table>
+    <script type="text/javascript" src="js/index.js"></script>
+    <script type="text/javascript" src="js/jquery.js"></script>
+
+</body>
+
+</html>
