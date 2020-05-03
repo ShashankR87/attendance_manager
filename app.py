@@ -154,7 +154,7 @@ def sign_hod():
         else:
             return redirect(url_for('login'))
 
-    return render_template('hod.html')
+    return render_template('admin.html')
 
 
 @app.route('/login', methods=['POST', 'GET'])
